@@ -1,0 +1,17 @@
+.cache
+compile_commands.json
+.vscode/*
+!.vscode/settings.json
+
+ex00/*
+!ex00/data.csv
+!ex00/Makefile
+!ex00/main.cpp
+!ex00/isNDigit.hpp
+!ex00/isNDigit.cpp
+!ex00/isValidDate.hpp
+!ex00/isValidDate.cpp
+!ex00/split.hpp
+!ex00/split.cpp
+!ex00/Database.hpp
+!ex00/Database.cpp
