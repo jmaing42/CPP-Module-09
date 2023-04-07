@@ -25,7 +25,7 @@ void Database::feed(const std::string &path) {
   std::string line;
   bool isHeader = true;
   while (std::getline(infile, line)) {
-    if (!isHeader) {
+    if (isHeader) {
       if (line != "date,exchange_rate")
         throw std::exception();
       isHeader = false;
@@ -53,11 +53,15 @@ void Database::feed(const std::string &path) {
         throw std::exception();
 
       std::stringstream ss(date_and_rate[1]);
-      float rate;
+      double rate;
       ss >> rate;
 
       const long key = y * 10000L + m * 100L + d;
       this->data.insert(std::make_pair(key, rate));
     }
   }
+}
+
+double Database::get(long data) const {
+  return this->data.lower_bound(data)->second;
 }

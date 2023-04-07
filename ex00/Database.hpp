@@ -1,11 +1,12 @@
 #ifndef EX00_DATABASE_HPP_INCLUDED
 #define EX00_DATABASE_HPP_INCLUDED
 
+#include <functional>
 #include <map>
 
 class Database {
 private:
-  std::map<long, float> data;
+  std::map<long, double, std::greater<long> /* clangd bug */> data;
 
 public:
   Database();
@@ -14,6 +15,7 @@ public:
   Database &operator=(const Database &copy);
 
   void feed(const std::string &file);
+  double get(long date) const;
 };
 
 #endif

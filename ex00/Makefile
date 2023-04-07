@@ -1,5 +1,5 @@
 NAME = btc
-OBJS = main.o Database.o
+OBJS = main.o BitcoinExchange.o Database.o isNDigit.o isValidDate.o split.o
 
 CXXFLAGS = -Wall -Wextra -Werror
 
