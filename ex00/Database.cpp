@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "isNDigit.hpp"
@@ -55,12 +56,8 @@ void Database::feed(const std::string &path) {
       float rate;
       ss >> rate;
 
-      Database::Entry entry;
-      entry.year = y;
-      entry.month = m;
-      entry.day = d;
-      entry.rate = rate;
-      this->data.push_back(entry);
+      const long key = y * 10000L + m * 100L + d;
+      this->data.insert(std::make_pair(key, rate));
     }
   }
 }

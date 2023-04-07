@@ -1,19 +1,11 @@
 #ifndef EX00_DATABASE_HPP_INCLUDED
 #define EX00_DATABASE_HPP_INCLUDED
 
-#include <vector>
+#include <map>
 
 class Database {
 private:
-  class Entry {
-  public:
-    int year;
-    int month;
-    int day;
-    float rate;
-  };
-
-  std::vector<Entry> data;
+  std::map<long, float> data;
 
 public:
   Database();

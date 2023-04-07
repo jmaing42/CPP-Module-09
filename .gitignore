@@ -4,9 +4,10 @@ compile_commands.json
 !.vscode/settings.json
 
 ex00/*
-!ex00/data.csv
 !ex00/Makefile
 !ex00/main.cpp
+!ex00/BitcoinExchange.hpp
+!ex00/BitcoinExchange.cpp
 !ex00/isNDigit.hpp
 !ex00/isNDigit.cpp
 !ex00/isValidDate.hpp
