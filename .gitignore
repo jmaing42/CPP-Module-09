@@ -16,3 +16,11 @@ ex00/*
 !ex00/split.cpp
 !ex00/Database.hpp
 !ex00/Database.cpp
+
+ex01/*
+!ex01/Makefile
+!ex01/main.cpp
+!ex01/RPN.hpp
+!ex01/RPN.cpp
+!ex01/split.hpp
+!ex01/split.cpp
