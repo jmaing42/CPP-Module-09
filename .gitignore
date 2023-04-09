@@ -24,3 +24,9 @@ ex01/*
 !ex01/RPN.cpp
 !ex01/split.hpp
 !ex01/split.cpp
+
+ex02/*
+!ex02/Makefile
+!ex02/main.cpp
+!ex02/PMergeMe.hpp
+!ex02/PMergeMe.cpp
