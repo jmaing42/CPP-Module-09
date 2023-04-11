@@ -1,5 +1,11 @@
 #include "PmergeMe.hpp"
 
+void swap(int &a, int &b) {
+  int c = a;
+  a = b;
+  b = c;
+}
+
 bool isPositiveInt(const std::string &stringRepresentation) {
   int result = 0;
 
