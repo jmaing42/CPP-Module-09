@@ -14,7 +14,8 @@ bool isPositiveInt(const std::string &stringRepresentation);
 
 template <template <typename TData, typename TAllocator =
                                         std::allocator<TData> /* clangd bug */>
-          class T>
+          class T,
+          size_t INSERTION_SORT_SIZE = 100>
 class PmergeMe {
 private:
   T<int> container;
@@ -44,7 +45,7 @@ public:
 
   void sort() {
     const size_t size = this->container.size();
-    if (size < 5) {
+    if (size < INSERTION_SORT_SIZE) {
       T<int> result;
       for (size_t i = 0; i < size; i++) {
         int min = this->container.front();

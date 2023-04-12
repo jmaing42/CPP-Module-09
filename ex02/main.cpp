@@ -1,11 +1,24 @@
 #include <cstddef>
-#include <ctime>
 #include <exception>
 #include <iostream>
 #include <list>
 #include <vector>
 
+#include <sys/time.h>
+
 #include "PmergeMe.hpp"
+
+static struct timeval getTime() {
+  struct timeval result;
+  if (gettimeofday(&result, NULL))
+    throw std::exception();
+  return result;
+}
+
+static size_t sub(struct timeval lhs, struct timeval rhs) {
+  return (lhs.tv_sec - rhs.tv_sec - 1) * (size_t)1000000 +
+         (lhs.tv_usec + 1000000 - rhs.tv_usec);
+}
 
 int main(int argc, char **argv) {
   try {
@@ -16,23 +29,19 @@ int main(int argc, char **argv) {
       list.add(argv[i]);
     }
     std::cout << "Before: " << vec << std::endl;
-    time_t vecStart = time(NULL);
+    struct timeval vecStart = getTime();
     vec.sort();
-    time_t vecEnd = time(NULL);
-    if (vecStart == time_t(-1) || vecEnd == time_t(-1))
-      throw std::exception();
-    time_t listStart = time(NULL);
+    struct timeval vecEnd = getTime();
+    struct timeval listStart = getTime();
     list.sort();
-    time_t listEnd = time(NULL);
-    if (listStart == time_t(-1) || listEnd == time_t(-1))
-      throw std::exception();
+    struct timeval listEnd = getTime();
     std::cout << "After: " << vec << std::endl;
     std::cout << "Time to process a range of " << argc - 1
-              << " elements with std::vector : " << vecEnd - vecStart << " s"
-              << std::endl;
+              << " elements with std::vector : " << sub(vecEnd, vecStart)
+              << " us" << std::endl;
     std::cout << "Time to process a range of " << argc - 1
-              << " elements with std::list : " << listEnd - listStart << " s"
-              << std::endl;
+              << " elements with std::list : " << sub(listEnd, listStart)
+              << " us" << std::endl;
   } catch (const std::exception &e) {
     std::cout << "Error" << std::endl;
   }
